@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alejo Bosch &mdash; Semi-Senior Unity Developer</title>
+<meta name="description" content="Portfolio of Alejo Bosch, Semi-Senior Unity Developer. Unity, C#, gameplay programming, custom Unity tooling, performance optimization and AR.">
+<style>
+:root{
+  --bg:#ffffff;
+  --surface:#f7f8fa;
+  --line:#e2e6ea;
+  --text:#14181d;
+  --body:#2c333b;
+  --muted:#5c6773;
+  --accent:#1a56b8;
+  --dark:#0d1117;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+
+.site-header{background:var(--dark);color:#fff;padding:64px 0 56px}
+.site-header h1{margin:0;font-size:clamp(2rem,6vw,3.25rem);line-height:1.05;letter-spacing:-0.025em;font-weight:700}
+.site-header .role{margin:14px 0 0;font-size:clamp(1rem,2.6vw,1.25rem);color:#c9d4e0;font-weight:500}
+.site-header .stack{margin:18px 0 0;font-family:var(--mono);font-size:0.8125rem;line-height:1.7;color:#8b98a8;letter-spacing:0.02em}
+.links{margin:30px 0 0;display:flex;flex-wrap:wrap;gap:12px}
+.links a{display:inline-block;padding:9px 16px;border:1px solid #30363d;border-radius:6px;color:#fff;text-decoration:none;font-size:0.875rem;font-weight:500}
+.links a:hover{background:#1b222b;border-color:#4b5563}
+
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.label{margin:0 0 26px;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lead{margin:0 0 16px;font-size:1.0625rem;color:var(--body);max-width:66ch}
+.lead:last-child{margin-bottom:0}
+
+.card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:26px;margin-bottom:22px}
+.card:last-child{margin-bottom:0}
+.card-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:14px}
+.card h3{margin:0;font-size:1.25rem;letter-spacing:-0.01em}
+.badge{font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.1em;padding:4px 9px;border-radius:4px;border:1px solid;text-transform:uppercase;font-weight:600;white-space:nowrap}
+.badge.pro{color:#0f5132;border-color:#a7d5b9;background:#eaf6ee}
+.badge.personal{color:#7a4b00;border-color:#e6cf9a;background:#fdf5e3}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:0.75rem;color:#3d4752;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:3px 8px}
+.field{margin:0 0 15px}
+.field h4{margin:0 0 3px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.field p{margin:0;color:var(--body)}
+.repo{margin:0 0 18px;font-size:0.875rem}
+.repo a{color:var(--accent)}
+.btn{font-family:var(--mono);font-size:0.8125rem;letter-spacing:0.06em;padding:11px 18px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:6px;cursor:pointer;font-weight:600}
+.btn:hover{background:#14459a;border-color:#14459a}
+.btn[aria-expanded="true"]{background:#fff;color:var(--accent)}
+.preview{margin-top:18px}
+.frame{position:relative;width:100%;aspect-ratio:16 / 9;background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.frame video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+@supports not (aspect-ratio: 16 / 9){
+  .frame{height:0;padding-top:56.25%}
+  .frame video{position:absolute;top:0;left:0}
+}
+
+.grid-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.grid-tags li{font-family:var(--mono);font-size:0.8125rem;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:#3d4752}
+
+.exp{border-left:3px solid var(--accent);padding-left:20px}
+.exp h3{margin:0;font-size:1.125rem}
+.exp .meta{margin:4px 0 16px;color:var(--muted);font-size:0.9375rem}
+ul.plain{margin:0;padding-left:20px;color:var(--body)}
+ul.plain li{margin-bottom:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.two h3{margin:0 0 8px;font-size:1rem}
+.two p{margin:0 0 10px;color:var(--body);font-size:0.9375rem}
+.two p:last-child{margin-bottom:0}
+
+.site-footer{background:var(--dark);color:#8b98a8;padding:34px 0;font-size:0.875rem}
+.site-footer p{margin:0 0 6px}
+.site-footer p:last-child{margin-bottom:0}
+.site-footer a{color:#c9d4e0}
+
+@media (max-width:720px){
+  .two{grid-template-columns:1fr;gap:22px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 18px}
+  .site-header{padding:44px 0 38px}
+  section{padding:40px 0}
+  .card{padding:20px}
+  .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1>ALEJO BOSCH</h1>
+    <p class="role">Semi-Senior Unity Developer</p>
+    <p class="stack">Unity &middot; C# &middot; Gameplay &middot; AR &middot; Performance &middot; Custom Tools</p>
+    <nav class="links">
+      <a href="https://github.com/AlejoB98" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="about">
+  <div class="wrap">
+    <p class="label">About</p>
+    <p class="lead">I build games and tools in Unity and C# at Trick Studio, where I joined as a Junior developer and progressed internally to my current title of Semi-Senior Unity Developer.</p>
+    <p class="lead">I have worked on roughly 10&ndash;12 commercial projects, around 6 of them shipped, usually on 6&ndash;12 month cycles. My work concentrates on three areas: gameplay and production systems, custom Unity tooling built for the needs of a specific project, and performance optimization when a build does not hold up. I have also worked on AR applications with AR Foundation and, earlier in my career, on WebGL playable ads.</p>
+    <p class="lead">On most projects I have been the main programmer on a multidisciplinary team of about 3&ndash;4 people. In practice that means I review code, help teammates with technical questions, solve the harder technical problems, and decide how the features and systems under my responsibility get implemented.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="label">Selected Projects</p>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>Custom Painter Tool</h3>
+        <span class="badge pro">Professional</span>
+      </div>
+      <ul class="tags">
+        <li>Unity</li><li>C#</li><li>Unity Line Renderer</li><li>Custom Shaders</li>
+      </ul>
+      <div class="field">
+        <h4>Description</h4>
+        <p>A custom drawing system for a game in which the player draws their own avatar.</p>
+      </div>
+      <div class="field">
+        <h4>My contribution</h4>
+        <p>An existing plugin did not provide the functionality and workflow the project needed, so I built the system from scratch on top of Unity Line Renderer tools: drawing with mouse and finger input, erasing, color changes, layered drawing, and combining the drawing layers into a final image.</p>
+      </div>
+      <div class="field">
+        <h4>Technical challenge</h4>
+        <p>Layer compositing, erasing and blending could not be solved at the component level alone. I wrote custom shaders for compositing the drawing layers and for handling the erase functionality and blending correctly.</p>
+      </div>
+      <button class="btn" type="button" data-target="preview-painter" aria-expanded="false" aria-controls="preview-painter">[ PLAY PREVIEW ]</button>
+      <div class="preview" id="preview-painter" hidden>
+        <div class="frame">
+          <video controls muted playsinline preload="none" src="videos/painter.mp4"></video>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>2D GPU Instancing System</h3>
+        <span class="badge pro">Professional</span>
+      </div>
+      <ul class="tags">
+        <li>Unity</li><li>C#</li><li>GPU Instancing</li><li>Performance Optimization</li>
+      </ul>
+      <div class="field">
+        <h4>Description</h4>
+        <p>A grid-based game with more than 1,000 cells, built from scratch following the visual design provided by an artist.</p>
+      </div>
+      <div class="field">
+        <h4>My contribution</h4>
+        <p>I built the game from scratch against the provided visual design, then designed and implemented a GPU instancing system for the 2D environment.</p>
+      </div>
+      <div class="field">
+        <h4>Technical challenge</h4>
+        <p>The animated map initially ran at approximately 20&ndash;40 FPS and suffered from significant performance problems, including visible stuttering and freezing.</p>
+      </div>
+      <div class="field">
+        <h4>Result</h4>
+        <p>After the GPU instancing implementation, performance surpassed 100 FPS on the tested setup and the visible stuttering and freezing were eliminated.</p>
+      </div>
+      <button class="btn" type="button" data-target="preview-gpu" aria-expanded="false" aria-controls="preview-gpu">[ PLAY PREVIEW ]</button>
+      <div class="preview" id="preview-gpu" hidden>
+        <div class="frame">
+          <video controls muted playsinline preload="none" src="videos/gpu-instancing.mp4"></video>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>Lights Board</h3>
+        <span class="badge pro">Professional</span>
+      </div>
+      <ul class="tags">
+        <li>Unity</li><li>C#</li><li>Gameplay Programming</li><li>Grid / Puzzle Systems</li>
+      </ul>
+      <div class="field">
+        <h4>Description</h4>
+        <p>A puzzle game in which the player fills empty slots to complete an image and finish the puzzle.</p>
+      </div>
+      <div class="field">
+        <h4>My contribution</h4>
+        <p>I built the game from scratch following the visual design provided by an artist: gameplay implementation, the grid and cell map, the puzzle interactions, level functionality, and the integration of the Unity project elements.</p>
+      </div>
+      <button class="btn" type="button" data-target="preview-lights" aria-expanded="false" aria-controls="preview-lights">[ PLAY PREVIEW ]</button>
+      <div class="preview" id="preview-lights" hidden>
+        <div class="frame">
+          <video controls muted playsinline preload="none" src="videos/lights-board.mp4"></video>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h3>MTG Commander Timer</h3>
+        <span class="badge personal">Personal project</span>
+      </div>
+      <ul class="tags">
+        <li>Unity</li><li>C#</li>
+      </ul>
+      <div class="field">
+        <h4>Description</h4>
+        <p>A personal Unity and C# prototype for tracking turn time in 2&ndash;4 player Magic: The Gathering Commander games.</p>
+      </div>
+      <div class="field">
+        <h4>My contribution</h4>
+        <p>Built on my own time, outside of professional work.</p>
+      </div>
+      <p class="repo">Source: <a href="https://github.com/AlejoB98/MTG-Time-Tracker" target="_blank" rel="noopener">github.com/AlejoB98/MTG-Time-Tracker</a></p>
+      <button class="btn" type="button" data-target="preview-mtg" aria-expanded="false" aria-controls="preview-mtg">[ PLAY PREVIEW ]</button>
+      <div class="preview" id="preview-mtg" hidden>
+        <div class="frame">
+          <video controls muted playsinline preload="none" src="videos/mtg-timer.mp4"></video>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="technical-focus">
+  <div class="wrap">
+    <p class="label">Technical Focus</p>
+    <ul class="grid-tags">
+      <li>C#</li>
+      <li>Unity</li>
+      <li>Gameplay Programming</li>
+      <li>Unity Editor Tools</li>
+      <li>Custom Shaders</li>
+      <li>GPU Instancing</li>
+      <li>Performance Optimization</li>
+      <li>AR Foundation</li>
+      <li>WebGL</li>
+      <li>Luna</li>
+      <li>Git</li>
+    </ul>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="label">Professional Experience</p>
+    <div class="exp">
+      <h3>Trick Studio</h3>
+      <p class="meta">Semi-Senior Unity Developer &mdash; started as Junior and progressed internally to Semi-Senior.</p>
+      <ul class="plain">
+        <li>Approximately 10&ndash;12 professional projects, around 6 of them shipped.</li>
+        <li>Long-term projects, typically 6&ndash;12 month cycles.</li>
+        <li>Main programmer on multidisciplinary teams of approximately 3&ndash;4 people.</li>
+        <li>Gameplay and production systems; decided how the features and systems under my responsibility were implemented.</li>
+        <li>Custom developer tooling built for project-specific needs.</li>
+        <li>Performance optimization on projects that did not meet their frame-rate targets.</li>
+        <li>AR development for mobile.</li>
+        <li>Code review and technical support for coworkers; solving complex technical problems.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="additional">
+  <div class="wrap">
+    <p class="label">Additional Experience</p>
+    <div class="two">
+      <div>
+        <h3>AR</h3>
+        <p>A shipped Android and iOS AR application for a hotel, which used image tracking to detect images embedded in physical rocks and displayed particle systems at the tracked position.</p>
+        <p>A prototype that displayed 3D models in real-world environments so users could use the models as a real-world reference.</p>
+        <p><strong>Technologies:</strong> AR Foundation, Image Tracking, Plane Detection, ARCore, ARKit.</p>
+      </div>
+      <div>
+        <h3>Playable Ads</h3>
+        <p>Approximately 3 playable ads targeting mobile devices through WebGL, built in Unity and C# and exported with Luna via a Unity/C# to Luna JavaScript workflow.</p>
+        <p>At the time, Luna had limitations and many standard Unity tools were not supported, which required custom solutions. These are older projects in my career.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Alejo Bosch &middot; Semi-Senior Unity Developer</p>
+    <p>This portfolio shows selected work. My CV covers the full professional experience. &middot; <a href="https://github.com/AlejoB98" target="_blank" rel="noopener">github.com/AlejoB98</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var buttons = document.querySelectorAll('.btn[data-target]');
+  Array.prototype.forEach.call(buttons, function(btn){
+    btn.addEventListener('click', function(){
+      var box = document.getElementById(btn.getAttribute('data-target'));
+      if (!box) { return; }
+      var vid = box.querySelector('video');
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        if (vid) { vid.pause(); }
+        box.hidden = true;
+        btn.setAttribute('aria-expanded','false');
+        btn.textContent = '[ PLAY PREVIEW ]';
+      } else {
+        Array.prototype.forEach.call(document.querySelectorAll('video'), function(v){
+          if (v !== vid) { v.pause(); }
+        });
+        box.hidden = false;
+        btn.setAttribute('aria-expanded','true');
+        btn.textContent = '[ HIDE PREVIEW ]';
+        if (vid) {
+          var p = vid.play();
+          if (p && typeof p.catch === 'function') { p.catch(function(){}); }
+        }
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
